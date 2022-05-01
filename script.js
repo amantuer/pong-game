@@ -112,7 +112,7 @@ document.addEventListener('touchmove', e => {
 document.getElementById('pause').addEventListener('click', e => {
    isPaused = !isPaused 
 })
-document.getElementById('pause').addEventListener('touchstart', e => {
+document.getElementById('pause').addEventListener('touchend', e => {
    isPaused = !isPaused 
 })
 
@@ -134,7 +134,7 @@ Array.from(buttons).forEach(button => button.addEventListener('click', e => {
         break;  
     }
 }));
-Array.from(buttons).forEach(button => button.addEventListener('touchstart', e => {   
+Array.from(buttons).forEach(button => button.addEventListener('touchend', e => {   
     Array.from(buttons).forEach((button) => {
        if(button.classList.contains('active')){
          button.classList.remove('active')       
