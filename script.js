@@ -116,7 +116,7 @@ document.getElementById('pause').addEventListener('touchstart', e => {
    isPaused = !isPaused 
 })
 
-// add event listener to speed change button
+// add event listener to speed change butto
 const buttons = document.getElementsByClassName('Normal');
 Array.from(buttons).forEach(button => button.addEventListener('click', e => {   
     Array.from(buttons).forEach((button) => {
