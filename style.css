@@ -75,7 +75,7 @@ body {
   text-decoration: none;
   font-size: 3vh;
 }
-
+.Pause,
 .Normal {
   border: 1px solid black;
   margin: 1vh;
@@ -83,7 +83,7 @@ body {
   background: white;
   opacity: .5;
 }
-
+.Pause:hover,
 .Normal:hover {
   background: orange;
 }
