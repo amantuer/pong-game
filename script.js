@@ -112,8 +112,20 @@ document.addEventListener('touchmove', e => {
 document.getElementById('pause').addEventListener('click', e => {
    isPaused = !isPaused 
 })
+document.getElementById('pause').addEventListener('touchstart', e => {
+   [...e.changedTouches].forEach(touch => {
+      const dot = document.createElement('div')
+      dot.classList.add('dot')
+      dot.id = touch.identifier
+      document.body.append(dot)
+   })
+})
 document.getElementById('pause').addEventListener('touchend', e => {
-   isPaused = !isPaused 
+   [...e.changedTouches].forEach(touch => {
+      const dot = document.getElementById(touch.identifier)
+      dot.remove()
+      isPaused = !isPaused 
+   })
 })
 
 // add event listener to handle restart
