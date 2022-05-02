@@ -118,13 +118,13 @@ document.getElementById('pause').addEventListener('touchstart', e => {
       dot.classList.add('dot')
       dot.id = touch.identifier
       document.body.append(dot)
+      isPaused = !isPaused 
    })
 })
 document.getElementById('pause').addEventListener('touchend', e => {
    [...e.changedTouches].forEach(touch => {
       const dot = document.getElementById(touch.identifier)
       dot.remove()
-      isPaused = !isPaused 
    })
 })
 
