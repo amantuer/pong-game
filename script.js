@@ -116,6 +116,14 @@ document.getElementById('pause').addEventListener('touchend', e => {
    isPaused = !isPaused 
 })
 
+// add event listener to handle restart
+document.getElementById('restart').addEventListener('click', e => {
+   window.location = window.location.hash
+})
+document.getElementById('restart').addEventListener('touchend', e => {
+   window.location = window.location.hash
+})
+
 // add event listener to speed change butto
 const buttons = document.getElementsByClassName('Normal');
 Array.from(buttons).forEach(button => button.addEventListener('click', e => {   
