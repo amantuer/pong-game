@@ -111,6 +111,11 @@ document.addEventListener('touchmove', movePaddle)
 const pauseButton = document.getElementById('pause');
 function handlePause(e){
    e.preventDefault()
+   if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
+      document.body.classList.remove('hasHover')
+   }else {
+      document.body.classList.add('hasHover')
+   }
    isPaused = !isPaused 
 }
 pauseButton.addEventListener('click', handlePause)
@@ -118,7 +123,6 @@ pauseButton.addEventListener('touchstart', handlePause)
 
 // We need to add touchend handle on 
 // We don't need hover event on mobile read mdn read code change css when touchstirt
-// add event listener to handle restart
 const restartButton = document.getElementById('restart');
 function handleRestart(e){
    e.preventDefault()

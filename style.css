@@ -86,9 +86,9 @@ body {
   opacity: .5;
 }
 
-.Restart:hover,
-.Pause:hover,
-.Normal:hover {
+body.hasHover .Restart:hover,
+body.hasHover .Pause:hover,
+body.hasHover .Normal:hover {
   background: orange;
 }
 
