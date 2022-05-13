@@ -99,46 +99,38 @@ function handleLoseAndPause() {
 }
 
 // convert pixels value to vh get result of 0 ~ 100
-document.addEventListener('mousemove', e => {
+function movePaddle(e){
+  e.preventDefault()
   if(!isPaused)playerPaddle.position = (e.y / window.innerHeight) * 100
   if(!isPaused)stateStore.playerPaddle.position = playerPaddle.position
-})
-document.addEventListener('touchmove', e => {
-  if(!isPaused)playerPaddle.position = (e.y / window.innerHeight) * 100
-  if(!isPaused)stateStore.playerPaddle.position =  playerPaddle.position
-})
+}
+document.addEventListener('mousemove', movePaddle)
+document.addEventListener('touchmove', movePaddle)
 
 // add event listener to handle game pause
-document.getElementById('pause').addEventListener('click', e => {
+const pauseButton = document.getElementById('pause');
+function handlePause(e){
+   e.preventDefault()
    isPaused = !isPaused 
-})
-document.getElementById('pause').addEventListener('touchstart', e => {
-   [...e.changedTouches].forEach(touch => {
-      const dot = document.createElement('div')
-      dot.classList.add('dot')
-      dot.id = touch.identifier
-      document.body.append(dot)
-      isPaused = !isPaused 
-   })
-})
-document.getElementById('pause').addEventListener('touchend', e => {
-   [...e.changedTouches].forEach(touch => {
-      const dot = document.getElementById(touch.identifier)
-      dot.remove()
-   })
-})
+}
+pauseButton.addEventListener('click', handlePause)
+pauseButton.addEventListener('touchstart', handlePause)
 
+// We need to add touchend handle on 
+// We don't need hover event on mobile read mdn read code change css when touchstirt
 // add event listener to handle restart
-document.getElementById('restart').addEventListener('click', e => {
+const restartButton = document.getElementById('restart');
+function handleRestart(e){
+   e.preventDefault()
    window.location = window.location.hash
-})
-document.getElementById('restart').addEventListener('touchend', e => {
-   window.location = window.location.hash
-})
+}
+restartButton.addEventListener('click', handleRestart)
+restartButton.addEventListener('touchend', handleRestart)
 
 // add event listener to speed change butto
 const buttons = document.getElementsByClassName('Normal');
-Array.from(buttons).forEach(button => button.addEventListener('click', e => {   
+function handleHardMenu(e){
+    e.preventDefault()
     Array.from(buttons).forEach((button) => {
        if(button.classList.contains('active')){
          button.classList.remove('active')       
@@ -153,24 +145,9 @@ Array.from(buttons).forEach(button => button.addEventListener('click', e => {
       case 'hard': SPEED = HARD_M;  
         break;  
     }
-}));
-Array.from(buttons).forEach(button => button.addEventListener('touchend', e => {   
-    Array.from(buttons).forEach((button) => {
-       if(button.classList.contains('active')){
-         button.classList.remove('active')       
-       }
-    }) 
-    e.target.classList.add('active')
-    switch(e.target.id){
-      case 'easy':  SPEED = EASY_M;
-        break;
-      case 'normal': SPEED = NORMAL_M;    
-        break;
-      case 'hard': SPEED = HARD_M;  
-        break;  
-    }
-}));
-
+}
+Array.from(buttons).forEach(button => button.addEventListener('click', handleHardMenu));
+Array.from(buttons).forEach(button => button.addEventListener('touchend', handleHardMenu));
 
 window.requestAnimationFrame(update)
 
