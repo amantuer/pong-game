@@ -110,12 +110,12 @@ document.addEventListener('touchmove', movePaddle)
 // add event listener to handle game pause
 const pauseButton = document.getElementById('pause');
 function handlePause(e){
-   e.preventDefault()
    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
       document.body.classList.remove('hasHover')
    }else {
       document.body.classList.add('hasHover')
-   }
+   } 
+   e.preventDefault()
    isPaused = !isPaused 
 }
 pauseButton.addEventListener('click', handlePause)
@@ -125,6 +125,11 @@ pauseButton.addEventListener('touchstart', handlePause)
 // We don't need hover event on mobile read mdn read code change css when touchstirt
 const restartButton = document.getElementById('restart');
 function handleRestart(e){
+   if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
+      document.body.classList.remove('hasHover')
+   }else {
+      document.body.classList.add('hasHover')
+   } 
    e.preventDefault()
    window.location = window.location.hash
 }
@@ -134,6 +139,11 @@ restartButton.addEventListener('touchend', handleRestart)
 // add event listener to speed change butto
 const buttons = document.getElementsByClassName('Normal');
 function handleHardMenu(e){
+   if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
+      document.body.classList.remove('hasHover')
+   }else {
+      document.body.classList.add('hasHover')
+   } 
     e.preventDefault()
     Array.from(buttons).forEach((button) => {
        if(button.classList.contains('active')){
