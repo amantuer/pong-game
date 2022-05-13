@@ -100,6 +100,11 @@ function handleLoseAndPause() {
 
 // convert pixels value to vh get result of 0 ~ 100
 function movePaddle(e){
+   if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
+      document.body.classList.remove('hasHover')
+   }else {
+      document.body.classList.add('hasHover')
+   } 
   e.preventDefault()
   if(!isPaused)playerPaddle.position = (e.y / window.innerHeight) * 100
   if(!isPaused)stateStore.playerPaddle.position = playerPaddle.position
