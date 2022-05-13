@@ -101,9 +101,15 @@ function handleLoseAndPause() {
 // convert pixels value to vh get result of 0 ~ 100
 function movePaddle(e){
    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
-      document.body.classList.remove('hasHover')
+      if(document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.remove('hasHover')
+      }     
    }else {
-      document.body.classList.add('hasHover')
+      if(!document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.add('hasHover')
+      }            
    } 
   e.preventDefault()
   if(!isPaused)playerPaddle.position = (e.y / window.innerHeight) * 100
@@ -116,9 +122,15 @@ document.addEventListener('touchmove', movePaddle)
 const pauseButton = document.getElementById('pause');
 function handlePause(e){
    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
-      document.body.classList.remove('hasHover')
+      if(document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.remove('hasHover')
+      }     
    }else {
-      document.body.classList.add('hasHover')
+      if(!document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.add('hasHover')
+      }            
    } 
    e.preventDefault()
    isPaused = !isPaused 
@@ -131,9 +143,15 @@ pauseButton.addEventListener('touchstart', handlePause)
 const restartButton = document.getElementById('restart');
 function handleRestart(e){
    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
-      document.body.classList.remove('hasHover')
+      if(document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.remove('hasHover')
+      }     
    }else {
-      document.body.classList.add('hasHover')
+      if(!document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.add('hasHover')
+      }            
    } 
    e.preventDefault()
    window.location = window.location.hash
@@ -145,9 +163,15 @@ restartButton.addEventListener('touchend', handleRestart)
 const buttons = document.getElementsByClassName('Normal');
 function handleHardMenu(e){
    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend' || e.type === 'touchcancel'){
-      document.body.classList.remove('hasHover')
+      if(document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.remove('hasHover')
+      }     
    }else {
-      document.body.classList.add('hasHover')
+      if(!document.body.classList.contains('hasHover'))
+      {
+         document.body.classList.add('hasHover')
+      }            
    } 
     e.preventDefault()
     Array.from(buttons).forEach((button) => {
